@@ -28,7 +28,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             val painter = painterResource(id = R.drawable.maxresdefault)
             val description = "Kermit is playing in the snow"
-            val title = "Kermit is playing in the snow";
+            val title = "Kermit is playing in the snow"
             Box(modifier = Modifier.fillMaxWidth(0.5f).padding(16.dp))
             {
                 ImageCard(painter = painter, contentDescription = description, title = title)
