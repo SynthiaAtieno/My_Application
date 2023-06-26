@@ -32,7 +32,9 @@ class MainActivity : ComponentActivity() {
             val description = "Kermit is playing in the snow"
             val title = "Kermit is playing in the snow"
 
-            Row() {
+            Row(
+                Modifier.fillMaxWidth()
+            ) {
                 Box(
                     modifier = Modifier
                         .fillMaxWidth(0.5f)
@@ -42,10 +44,9 @@ class MainActivity : ComponentActivity() {
                     ImageCard(painter = painter, contentDescription = description, title = title)
                 }
 
-                Spacer(modifier = Modifier.width(16.dp))
                 Box(
                     modifier = Modifier
-                        .fillMaxWidth(0.5f)
+                        .fillMaxWidth()
                         .padding(16.dp)
                 )
                 {
