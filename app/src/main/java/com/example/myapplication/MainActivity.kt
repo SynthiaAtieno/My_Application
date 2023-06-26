@@ -19,6 +19,9 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -31,26 +34,59 @@ class MainActivity : ComponentActivity() {
             val description = "Kermit is playing in the snow"
             val title = "Kermit is playing in the snow"
 
-            Row(
+            Column(
                 Modifier.fillMaxWidth()
             ) {
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth(0.5f)
-                        .padding(16.dp)
-                )
-                {
-                    ImageCard(painter = painter, contentDescription = description, title = title)
+
+                Text(text = buildAnnotatedString {
+                    withStyle(
+                        style = SpanStyle(
+                            color = Color.Blue,
+                            fontSize = 30.sp
+                        )
+                    )
+                    {
+                        append("J")
+                    }
+                    append("etpack")
+
+                    withStyle(
+                        style = SpanStyle(
+                            color = Color.Green,
+                            fontSize = 30.sp
+                        )
+                    ){
+                        append(" C")
+                    }
+                    append("ompose")
+                },
+                color = Color.Red,
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold,
+                fontFamily = FontFamily.Monospace)
+                Row(modifier = Modifier.fillMaxWidth()) {
+
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth(0.5f)
+                            .padding(16.dp)
+                    )
+                    {
+                        ImageCard(painter = painter, contentDescription = description, title = title)
+                    }
+
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(16.dp)
+                    )
+                    {
+                        ImageCard(painter = painter, contentDescription = description, title = title)
+                    }
+
                 }
 
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(16.dp)
-                )
-                {
-                    ImageCard(painter = painter, contentDescription = description, title = title)
-                }
+
             }
            
         }
