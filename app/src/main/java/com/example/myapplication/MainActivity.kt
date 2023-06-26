@@ -17,7 +17,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
@@ -28,13 +31,30 @@ class MainActivity : ComponentActivity() {
             val painter = painterResource(id = R.drawable.maxresdefault)
             val description = "Kermit is playing in the snow"
             val title = "Kermit is playing in the snow"
-            Box(modifier = Modifier.fillMaxWidth(0.5f).padding(16.dp))
-            {
-                ImageCard(painter = painter, contentDescription = description, title = title)
+
+            Row() {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth(0.5f)
+                        .padding(16.dp)
+                )
+                {
+                    ImageCard(painter = painter, contentDescription = description, title = title)
+                }
+
+                Spacer(modifier = Modifier.width(16.dp))
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth(0.5f)
+                        .padding(16.dp)
+                )
+                {
+                    ImageCard(painter = painter, contentDescription = description, title = title)
+                }
             }
-
-
+           
         }
+
     }
 }
 
@@ -56,17 +76,19 @@ fun ImageCard(
                 contentScale = ContentScale.Crop,
                 contentDescription = contentDescription
             )
-            Box(modifier = Modifier
-                .fillMaxSize()
-                .background(
-                    Brush.verticalGradient(
-                        colors = listOf(
-                            Color.Transparent,
-                            Color.Black
-                        ),
-                        startY =  300f
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(
+                        Brush.verticalGradient(
+                            colors = listOf(
+                                Color.Transparent,
+                                Color.Black
+                            ),
+                            startY = 300f
+                        )
                     )
-                ))
+            )
 
             Box(
                 modifier = Modifier
@@ -74,7 +96,10 @@ fun ImageCard(
                     .padding(12.dp),
                 contentAlignment = Alignment.BottomStart
             ) {
-                Text(text = title, style = TextStyle(Color.White, fontSize = 16.sp))
+                Text(
+
+                    text = title, style = TextStyle(Color.White, fontSize = 16.sp)
+                )
             }
         }
 
